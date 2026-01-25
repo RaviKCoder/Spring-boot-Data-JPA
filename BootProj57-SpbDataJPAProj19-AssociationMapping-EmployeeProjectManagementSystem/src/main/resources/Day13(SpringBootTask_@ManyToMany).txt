@@ -1,0 +1,118 @@
+TASK 1: Employee–Project Management System
+
+==========================================
+
+📌 Scenario
+
+In an IT company:
+
+An Employee can work on multiple Projects
+
+A Project can have multiple Employees
+
+This represents a Many-to-Many relationship between Employee and Project
+
+🎯 Objective
+
+Design a Spring Boot application to manage employee details and project assignments using Many-to-Many mapping with JPA.
+
+🧱 Entities
+🔹 Employee
+
+Description:
+Represents an employee working in the organization.
+
+Properties:
+
+employeeId – unique identifier for employee
+
+name – employee full name
+
+designation – job role (Developer, Tester, Manager, etc.)
+
+salary – employee salary
+
+list of projects – projects assigned to the employee
+
+Responsibility:
+
+Maintain employee information
+
+Manage assignment of projects
+
+🔹 Project
+
+Description:
+Represents a project handled by the company.
+
+Properties:
+
+projectId – unique project identifier
+
+projectName – name of the project
+
+clientName – client associated with the project
+
+duration – project duration (in months)
+
+list of employees – employees working on the project
+
+Responsibility:
+
+Maintain project details
+
+Track assigned employees
+
+🗄 Database Requirements
+
+========================
+
+Tables:
+
+employee – stores employee details
+
+project – stores project details
+
+employee_project – join table to maintain Many-to-Many relationship
+
+Join Table Columns:
+
+employee_id – references employee
+
+project_id – references project
+
+Purpose of Join Table:
+
+Stores employee–project mapping
+
+Avoids data duplication
+
+Maintains relationship integrity
+
+🔧 Functional Requirements
+
+============================
+
+Add new employees to the system
+
+Add new projects to the system
+
+Assign one employee to multiple projects
+
+Assign one project to multiple employees
+
+Retrieve employees along with their assigned projects
+
+Retrieve projects along with their assigned employees
+
+🔄 Application Flow (High Level)
+=================================
+Create employee records
+
+Create project records
+
+Assign projects to employees
+
+Persist employee–project mapping
+
+Fetch and display mapping from both sides

@@ -1,0 +1,125 @@
+Task: Book-Author Management System (Many-to-One Mapping)
+✅ Objective:
+Build a Spring Boot Console Application using Spring Data JPA where:
+
+Many Books are written by one Author (Many-to-One).
+
+One Author can write multiple Books.
+
+Data will be persisted using MySQL or Oracle database.
+
+📘 Use Case:
+An admin wants to register authors and their books. The system should:
+
+Allow the creation of an Author.
+
+Allow the addition of multiple Books written by that author.
+
+Save data in the database while maintaining the relationship.
+
+Retrieve and display all books with their corresponding authors.
+
+📦 Entities and Relationship:
+1️⃣ Entity: Author (Parent)
+Fields:
+
+id: Primary Key (Auto-generated)
+
+name: Full name of the author
+
+country: Country of origin
+
+2️⃣ Entity: Book (Child)
+Fields:
+
+id: Primary Key (Auto-generated)
+
+title: Book title
+
+genre: e.g., Fiction, History, Sci-Fi
+
+author: Reference to the author
+
+Relationship:
+
+Annotated with @ManyToOne
+
+Mapped using @JoinColumn(name = "author_id") in the Book entity
+
+📋 Functional Requirements
+A. Data Insertion:
+Ask the user:
+
+Author name and country
+
+Number of books to add
+
+For each book: title and genre
+
+Set up the ManyToOne relationship and persist using Spring Data JPA.
+
+Saving the Book will reference the associated Author.
+
+B. Data Retrieval:
+Fetch all books from the database
+
+For each book, display:
+
+Title and genre
+
+Author name and country
+
+C. Deletion (Optional):
+Delete a book by ID
+
+Author remains unaffected
+
+🧪 Test Scenarios:
+Test Case	                      Expected Behavior
+Add 1 Author, 3 Books	              Books saved and correctly reference the author
+Add 2 Authors, 2 Books each	      Books linked to correct authors
+Fetch All Books	Should return books with their author details
+Delete Book	                      Only that book is deleted, author remains
+
+🧰 Tech Stack:
+Spring Boot 3.1.5
+
+Spring Data JPA
+
+Console-based I/O using CommandLineRunner
+
+Maven
+
+MySQL or Oracle
+
+🗃 Database Configuration
+MySQL:properties
+
+spring.datasource.url=jdbc:mysql://localhost:3306/bookdb
+spring.datasource.username=root
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+Oracle:properties
+
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle12cDialect
+
+📤 Deliverables:
+✅ Entity Design: Book and Author with Many-to-One mapping
+
+✅ Repositories: For both entities using Spring Data JPA
+
+✅ Runner Class: For interactive user input and saving/fetching data
+
+✅ Database Config: For MySQL or Oracle
+
+✅ Sample Output: Console print showing books and their authors
